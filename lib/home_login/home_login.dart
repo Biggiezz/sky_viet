@@ -18,6 +18,10 @@ class _HomeLoginState extends State<HomeLogin> {
   bool _isObscured = true;
   bool isChecked = false;
   final LocalAuthentication auth = LocalAuthentication();
+  final passwordRegex = RegExp(
+      r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$'
+  );
+
 
   @override
   void initState() {
@@ -138,51 +142,60 @@ class _HomeLoginState extends State<HomeLogin> {
   }
 
   Widget _buildTextFieldPassWord() {
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      height: 60,
-      padding: EdgeInsets.fromLTRB(0, 8, 0,0), // Cân đối padding
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: Color(0xFFC7C9D9)),
-      ),
-      child: TextField(
-        controller: _passwordController,
-        focusNode: _passwordFocus,
-        obscureText: _isObscured,
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          hintText: 'At least 8 characters',
-          hintStyle: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w500,
-            color: Color(0xFF28293D),
-          ),
-          contentPadding: EdgeInsets.symmetric(horizontal:16),
-          label: Text(
-            'Mật khẩu',
-            style: TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w500,
-              color: Color(0xFF8F90A6),
-            ),
-          ),
-          suffixIcon: IconButton(
+    return TextFormField(
+      controller: _passwordController,
+      focusNode: _passwordFocus,
+      obscureText: _isObscured,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+      validator: (value) {
+        if (value == null || value.isEmpty) return 'Vui lòng nhập mật khẩu';
+        if (!passwordRegex.hasMatch(value)) {
+          return 'Mật khẩu phải ≥8 ký tự, có chữ hoa, chữ thường, số và ký tự đặc biệt';
+        }
+        return null;
+      },
+      style: const TextStyle(fontSize: 16, height: 1.4),
+      decoration: InputDecoration(
+        filled: true,
+        fillColor: const Color(0xFFFAFAFA),
 
-            icon: Icon(
-              _isObscured ? Icons.visibility : Icons.visibility_off,
-              color: Color(0xFFC03A2C),
-            ),
-            onPressed: () {
-              setState(() {
-                _isObscured = !_isObscured;
-              });
-            },
+        labelText: 'Mật khẩu',
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+        hintText: 'At least 8 characters',
+
+        isDense: true,
+        contentPadding: const EdgeInsets.fromLTRB(16, 24, 48, 14),
+
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: const BorderSide(color: Color(0xFFC7C9D9)),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: const BorderSide(color: Color(0xFFC7C9D9)),
+        ),
+        disabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: const BorderSide(color: Color(0xFFC7C9D9)),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: const BorderSide(color: Color(0xFFC03A2C), width: 1.5),
+        ),
+
+        suffixIcon: IconButton(
+          icon: Icon(
+            _isObscured ? Icons.visibility : Icons.visibility_off,
+            color: const Color(0xFFC03A2C),
           ),
+          onPressed: () => setState(() => _isObscured = !_isObscured),
         ),
       ),
+      keyboardType: TextInputType.visiblePassword,
+      textInputAction: TextInputAction.done,
     );
   }
+
 
   Widget _buildText() {
     return Padding(
@@ -262,7 +275,7 @@ class _HomeLoginState extends State<HomeLogin> {
             ),
           ),
         ),
-        const SizedBox(width: 12), // Khoảng cách giữa nút Đăng nhập và Face ID
+        const SizedBox(width: 12),
         // Nút Face ID
         GestureDetector(
           onTap: () async {
