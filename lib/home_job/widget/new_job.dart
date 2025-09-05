@@ -1,5 +1,6 @@
 import 'package:chat/assets/image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class NewJob extends StatefulWidget {
   const NewJob({super.key});
@@ -17,6 +18,9 @@ class _NewJobState extends State<NewJob> {
           padding: const EdgeInsets.all(20),
           child: Column(
             children: [
+
+              _buildJobEntry(),
+              SizedBox(height: 12),
               _buildJobEntry(),
               SizedBox(height: 12),
               _buildJobEntry(),
@@ -29,20 +33,36 @@ class _NewJobState extends State<NewJob> {
 
   Widget _buildJobEntry() {
     return Container(
-
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16),
-        color: Colors.amberAccent,
+          borderRadius: BorderRadius.circular(12),
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Color(0xFF606170).withValues(alpha: 0.16),
+              spreadRadius: 0,
+              blurRadius: 24,
+              offset: Offset(0, 16),
+            ), BoxShadow(
+              color: Color(0xFF28293D).withValues(alpha: 0.04),
+              spreadRadius: 0,
+              blurRadius: 8,
+              offset: Offset(0, 2),
+            )
+          ]
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+            padding: const EdgeInsets.fromLTRB(20, 20, 20, 10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Icon(Icons.add_card),
+                Container(color: Colors.red,),
+               Image.asset(ImageAssets.addHome,
+                 width: 24,
+                 height: 24,
+               ),
                 const Text(
                   'CAO TỐC BẮC NAM',
                   style: TextStyle(
@@ -51,8 +71,10 @@ class _NewJobState extends State<NewJob> {
                     color: Color(0xFF8F90A6),
                   ),
                 ),
-                const SizedBox(width: 8),
-                Image.asset('assets/images/flag.png'), // Ensure asset is defined
+                const Spacer(),
+                Image.asset(ImageAssets.flag,
+                  width: 24,
+                  height: 24,), // Ensure asset is defined
               ],
             ),
           ),
@@ -77,9 +99,7 @@ class _NewJobState extends State<NewJob> {
               children: [
                 Row(
                   children: [
-                    Image.asset(
-                      'assets/images/person_edit.png',
-                    ), // Ensure asset is defined
+                    Image.asset(ImageAssets.personEdit),
                     const SizedBox(width: 4),
                     const Text(
                       'Nguyễn Hoàng Anh Thư',
@@ -94,9 +114,7 @@ class _NewJobState extends State<NewJob> {
                 const SizedBox(height: 12),
                 Row(
                   children: [
-                    Image.asset(
-                      'assets/images/person_tick.png',
-                    ), // Ensure asset is defined
+                    Image.asset(ImageAssets.personTick),
                     const SizedBox(width: 4),
                     const Text(
                       'Hoàng Thu Hồng',
@@ -124,7 +142,7 @@ class _NewJobState extends State<NewJob> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Image.asset('assets/images/calendar.png'), // Ensure asset is defined
+        Image.asset(ImageAssets.calendar), // Ensure asset is defined
         const SizedBox(width: 4),
         const Text(
           '23/03/2023',

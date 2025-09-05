@@ -31,11 +31,11 @@ class _HomeChatState extends State<HomeChat> {
               SizedBox(
                 width: MediaQuery.of(context).size.width,
                 height: 160,
-                child: Image.asset(ImageAssets.logoSky),
+                child: Image.asset(ImageAssets.logoHome),
               ),
               SizedBox(
                 width: MediaQuery.of(context).size.width,
-                child: Image.asset(ImageAssets.logoHome),
+                child: Image.asset(ImageAssets.logo),
               ),
             ],
           ),

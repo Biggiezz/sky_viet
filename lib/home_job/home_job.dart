@@ -1,8 +1,10 @@
+import 'package:chat/assets/image.dart';
 import 'package:chat/home_job/widget/closed_job.dart';
 import 'package:chat/home_job/widget/doing_job.dart';
 import 'package:chat/home_job/widget/done_job.dart';
 import 'package:chat/home_job/widget/new_job.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class HomeJob extends StatefulWidget {
   const HomeJob({super.key});
@@ -14,43 +16,40 @@ class HomeJob extends StatefulWidget {
 class _HomeJobState extends State<HomeJob> {
   int _currentIndex = 0; // tab hiện tại
 
-  // final List<Widget> _pages = [
-  //   Center(child: Text("Danh sách công việc mới tạo")),
-  //   Center(child: Text("Danh sách công việc đang làm")),
-  //   Center(child: Text("Danh sách công việc hoàn thành")),
-  //   Center(child: Text("Danh sách công việc đã đóng")),
-  // ];
   final List<Widget> _pages = const [
     NewJob(),
-    Center(child: Text("Danh sách công việc mới tạo")),
     DoingJob(),
-       Center(child: Text("Danh sách công việc đang làm")),
     DoneJob(),
-       Center(child: Text("Danh sách công việc hoàn thành")),
-
     ClosedJob(),
-       Center(child: Text("Danh sách công việc đã đóng")),
-
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        notificationPredicate: defaultScrollNotificationPredicate,
-        backgroundColor: Colors.redAccent,
-        title: const Text(
-          'Công việc',
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.w600,
-            color: Colors.white,
-          ),
+        backgroundColor: Colors.red,
+
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            const Text(
+              'Công việc',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.w600,
+                color: Colors.white,
+              ),
+            ),
+          ],
         ),
         actions: [
-          IconButton(
-            icon: const Icon(Icons.home, color: Colors.white),
-            onPressed: () {},
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: GestureDetector(
+              onTap: () {},
+              child: SvgPicture.asset(ImageAssets.appBarSVG),
+            ),
           ),
         ],
       ),
@@ -67,8 +66,16 @@ class _HomeJobState extends State<HomeJob> {
                   width: 330,
                   height: 48,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    color: Colors.white,
+                      borderRadius: BorderRadius.circular(12),
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Color(0xFF7A7A7A).withValues(alpha: 0.20),
+                          spreadRadius: 0,
+                          blurRadius: 21.94,
+                          offset: Offset(0, 10.97),
+                        ),
+                      ]
                   ),
                   child: Row(
                     children: const [
@@ -87,10 +94,18 @@ class _HomeJobState extends State<HomeJob> {
                   width: 48,
                   height: 48,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    color: Colors.white,
+                      borderRadius: BorderRadius.circular(12),
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Color(0xFF7A7A7A).withValues(alpha: 0.20),
+                          spreadRadius: 0,
+                          blurRadius: 21.94,
+                          offset: Offset(0, 10.97),
+                        ),
+                      ]
                   ),
-                  child: const Icon(Icons.search_sharp, size: 40),
+                  child: Image.asset(ImageAssets.iconSearch, scale: 1.6),
                 ),
               ],
             ),
@@ -98,26 +113,37 @@ class _HomeJobState extends State<HomeJob> {
 
           // Tab filter
           _buildTapJob(),
-
+          SizedBox(height: 20),
           // Nội dung thay đổi theo tab
           Expanded(
-            child: IndexedStack(
-              index: _currentIndex,
-              children: _pages,
-            ),
+            child: IndexedStack(index: _currentIndex, children: _pages),
           ),
         ],
       ),
-
 
       floatingActionButton: FloatingActionButton(
         backgroundColor: const Color(0xFFd20000),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
         onPressed: () {},
-        child: const Icon(
-          Icons.add,
-          size: 40,
-          color: Colors.white,
+        child: Stack(
+          children:[ Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(30),
+              color: Color(0xFFC03A2C),
+              boxShadow: [
+                BoxShadow(
+                  color: Color(0xFFD20000).withValues(alpha: 0.25),
+                  spreadRadius: 0,
+                  blurRadius: 24,
+                  offset: Offset(4, 8),
+                ),
+              ],
+            ),
+          ),
+            Center(child: Icon(Icons.add,
+            color: Colors.white,
+            size: 50,)),
+    ]
         ),
       ),
     );
@@ -144,8 +170,9 @@ class _HomeJobState extends State<HomeJob> {
               child: Text(
                 tabs[index],
                 style: TextStyle(
+                  fontSize: 14,
                   fontWeight: FontWeight.w600,
-                  color: isActive ? Colors.redAccent : const Color(0xFF8F90A6),
+                  color: isActive ? Color(0xFFC03A2C) : const Color(0xFF8F90A6),
                 ),
               ),
             );

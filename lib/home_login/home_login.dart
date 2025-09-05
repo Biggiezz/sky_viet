@@ -1,7 +1,8 @@
 import 'package:chat/assets/image.dart';
 import 'package:chat/home_job/home_job.dart';
 import 'package:flutter/material.dart';
-import 'package:local_auth/local_auth.dart' show AuthenticationOptions, LocalAuthentication;
+import 'package:local_auth/local_auth.dart'
+    show AuthenticationOptions, LocalAuthentication;
 
 class HomeLogin extends StatefulWidget {
   const HomeLogin({super.key});
@@ -19,9 +20,8 @@ class _HomeLoginState extends State<HomeLogin> {
   bool isChecked = false;
   final LocalAuthentication auth = LocalAuthentication();
   final passwordRegex = RegExp(
-      r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$'
+    r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$',
   );
-
 
   @override
   void initState() {
@@ -79,7 +79,10 @@ class _HomeLoginState extends State<HomeLogin> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -88,11 +91,11 @@ class _HomeLoginState extends State<HomeLogin> {
               SizedBox(
                 width: MediaQuery.of(context).size.width,
                 height: 160,
-                child: Image.asset(ImageAssets.logoSky),
+                child: Image.asset(ImageAssets.logoHome),
               ),
               SizedBox(
                 width: MediaQuery.of(context).size.width,
-                child: Image.asset(ImageAssets.logoHome),
+                child: Image.asset(ImageAssets.logo),
               ),
             ],
           ),
@@ -103,7 +106,12 @@ class _HomeLoginState extends State<HomeLogin> {
               children: [
                 Row(
                   children: [
-                    Image.asset(ImageAssets.homeLogin),
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      child: Image.asset(ImageAssets.homeLogin, scale: 2),
+                    ),
                     SizedBox(width: 12),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -196,7 +204,6 @@ class _HomeLoginState extends State<HomeLogin> {
     );
   }
 
-
   Widget _buildText() {
     return Padding(
       padding: const EdgeInsets.fromLTRB(0, 8, 0, 0),
@@ -252,8 +259,11 @@ class _HomeLoginState extends State<HomeLogin> {
               }
             },
             child: GestureDetector(
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => HomeJob()));
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => HomeJob()),
+                );
               },
               child: Container(
                 height: 50,
@@ -290,11 +300,7 @@ class _HomeLoginState extends State<HomeLogin> {
               );
             }
           },
-          child: Icon(
-            Icons.fingerprint,
-            color: const Color(0xFFC03A2C),
-            size: 35
-          ),
+          child: Image.asset(ImageAssets.faceIdLogin, scale: 2),
         ),
       ],
     );
