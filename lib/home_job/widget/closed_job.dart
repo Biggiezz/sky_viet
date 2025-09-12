@@ -1,5 +1,6 @@
 import 'package:chat/assets/image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ClosedJob extends StatefulWidget {
   const ClosedJob({super.key});
@@ -14,6 +15,7 @@ class _ClosedJobState extends State<ClosedJob> {
     return SingleChildScrollView(
       child: Column(
         children: [
+          SizedBox(height: 20.h),
           _buildCloseJob(),
           _buildJobDontDone(),
 
@@ -26,10 +28,10 @@ class _ClosedJobState extends State<ClosedJob> {
 
   Widget _buildCloseJob() {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+      padding: const EdgeInsets.only(left: 20, right: 20),
       child: Container(
         width: MediaQuery.of(context).size.width,
-        height: 225,
+        height: 225.h,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
           color: Colors.white,
@@ -51,37 +53,50 @@ class _ClosedJobState extends State<ClosedJob> {
         child: Padding(
           padding: const EdgeInsets.all(20),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
                 children: [
-                  SizedBox(child: Image.asset(ImageAssets.addHome)),
-
-                  Text(
-                    'CAO TỐC BẮC NAM',
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                      color: Color(0xFF8F90A6),
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            width: 24.w,
+                            height: 24.h,
+                            child: Image.asset(ImageAssets.addHome),
+                          ),
+                        ],
+                      ),
+                      SizedBox(width: 4.w),
+                      Text(
+                        'CAO TỐC BẮC NAM',
+                        style: TextStyle(
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w500,
+                          color: Color(0xFF8F90A6),
+                        ),
+                      ),
+                    ],
                   ),
+                  SizedBox(width: 4),
 
-                  SizedBox(width: 130),
                   SizedBox(
-                    width: 24,
-                    height: 24,
+                    width: 24.w,
+                    height: 24.h,
                     child: Image.asset(ImageAssets.flag),
                   ),
                 ],
               ),
-              SizedBox(height: 12),
               Row(
                 children: [
                   SizedBox(
-                    width: 295,
-                    height: 44,
+                    width: 295.w,
+                    height: 44.h,
 
                     child: Text(
                       'Chở phòng thí nghiệm đi lấy mẫu tại Km189',
@@ -94,22 +109,24 @@ class _ClosedJobState extends State<ClosedJob> {
                   ),
                 ],
               ),
-              SizedBox(height: 16),
               Row(
                 children: [
                   Image.asset(ImageAssets.personEdit),
+                  SizedBox(width: 4.w),
                   Text('Trần Tú Anh'),
                 ],
               ),
-              SizedBox(height: 12),
               Row(
                 children: [
                   Image.asset(ImageAssets.personTick),
+                  SizedBox(width: 4.w),
                   Text('Hoàng Thu Hồng'),
                 ],
               ),
-              SizedBox(height: 12),
-              _buildCalendar(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [_buildCalendar()],
+              ),
             ],
           ),
         ),
@@ -119,19 +136,27 @@ class _ClosedJobState extends State<ClosedJob> {
 
   Widget _buildCalendar() {
     return Row(
-      //   mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         Image.asset(ImageAssets.calendar),
-        SizedBox(width: 4),
-        Text('23/03/2023'),
-        SizedBox(width: 8),
-        Image.asset(ImageAssets.fileNewJob),
-        SizedBox(width: 4),
-        Text('0 files'),
-        SizedBox(width: 90),
+        SizedBox(
+          width: 171.w,
+          height: 17.h,
+          child: Row(
+            children: [
+              SizedBox(width: 4.w),
+              Text('23/03/2023'),
+              SizedBox(width: 8.w),
+              Image.asset(ImageAssets.fileNewJob),
+              SizedBox(width: 4.w),
+              Text('0 files'),
+            ],
+          ),
+        ),
+
+        SizedBox(width: 40.w),
         Container(
-          width: 78,
-          height: 24,
+          width: 78.w,
+          height: 24.w,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(6),
             color: Color(0xFFE3FFF1),
@@ -139,9 +164,9 @@ class _ClosedJobState extends State<ClosedJob> {
 
           child: Center(
             child: Text(
-              'ĐÃ DUYỆT',
+              'ĐÃ DUYỆT',
               style: TextStyle(
-                fontSize: 12,
+                fontSize: 12.w,
                 fontWeight: FontWeight.w600,
                 color: Color(0xFF05A660),
               ),
@@ -154,10 +179,10 @@ class _ClosedJobState extends State<ClosedJob> {
 
   Widget _buildJobDontDone() {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(20, 12, 20, 12),
+      padding: const EdgeInsets.all(20),
       child: Container(
         width: MediaQuery.of(context).size.width,
-        height: 275,
+        height: 275.h,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
           color: Colors.white,
@@ -183,41 +208,49 @@ class _ClosedJobState extends State<ClosedJob> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
                 children: [
-                  SizedBox(
-                    child: Icon(Icons.add_card, color: Color(0xFF8F90A6)),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        width: 24.w,
+                        height: 24.h,
+                        child: Image.asset(ImageAssets.addHome),
+                      ),
+                      SizedBox(width: 4.w),
+                      Text(
+                        'CAO TỐC BẮC NAM',
+                        style: TextStyle(
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w500,
+                          color: Color(0xFF8F90A6),
+                        ),
+                      ),
+                    ],
                   ),
 
-                  Text(
-                    'CAO TỐC BẮC NAM',
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                      color: Color(0xFF8F90A6),
-                    ),
-                  ),
 
-                  SizedBox(width: 130),
+
                   SizedBox(
-                    width: 24,
-                    height: 24,
+                    width: 24.w,
+                    height: 24.h,
                     child: Image.asset(ImageAssets.flag),
                   ),
                 ],
               ),
-              SizedBox(height: 12),
+              SizedBox(height: 12.w),
               Row(
                 children: [
                   SizedBox(
-                    width: 295,
-                    height: 44,
+                    width: 295.w,
+                    height: 44.h,
 
                     child: Text(
                       'Chở phòng thí nghiệm đi lấy mẫu tại Km189',
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 16.sp,
                         fontWeight: FontWeight.w600,
                         color: Color(0xFF1C1C28),
                       ),
@@ -225,21 +258,23 @@ class _ClosedJobState extends State<ClosedJob> {
                   ),
                 ],
               ),
-              SizedBox(height: 16),
+              SizedBox(height: 16.h),
               Row(
                 children: [
                   Image.asset(ImageAssets.personEdit),
+                  SizedBox(width: 4.w),
                   Text('Trần Tú Anh'),
                 ],
               ),
-              SizedBox(height: 12),
+              SizedBox(height: 12.sp),
               Row(
                 children: [
                   Image.asset(ImageAssets.personTick),
+                  SizedBox(width: 4.w),
                   Text('Hoàng Thu Hồng'),
                 ],
               ),
-              SizedBox(height: 12),
+              SizedBox(height: 12.h),
               _buildCalendarDontDone(),
             ],
           ),
@@ -250,19 +285,18 @@ class _ClosedJobState extends State<ClosedJob> {
 
   Widget _buildCalendarDontDone() {
     return Row(
-      //   mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         Image.asset(ImageAssets.calendar),
-        SizedBox(width: 4),
+        SizedBox(width: 4.w),
         Text('23/03/2023'),
-        SizedBox(width: 8),
+        SizedBox(width: 8.w),
         Image.asset(ImageAssets.fileNewJob),
-        SizedBox(width: 4),
+        SizedBox(width: 4.w),
         Text('0 files'),
-        SizedBox(width: 70),
+        SizedBox(width: 70.w),
         Container(
           width: 97,
-          height: 24,
+          height: 24.h,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(6),
             color: Color(0xFFFFF1E1),
@@ -272,7 +306,7 @@ class _ClosedJobState extends State<ClosedJob> {
             child: Text(
               'CHƯA DUYỆT',
               style: TextStyle(
-                fontSize: 12,
+                fontSize: 12.sp,
                 fontWeight: FontWeight.w600,
                 color: Color(0xFFE56E00),
               ),

@@ -1,5 +1,6 @@
 import 'package:chat/admin_check_job/home_job_admin.dart';
 import 'package:chat/assets/image.dart';
+import 'package:chat/home_job/home_job.dart';
 import 'package:chat/home_login/home_login.dart';
 import 'package:flutter/material.dart';
 
@@ -117,30 +118,28 @@ class _HomeChatState extends State<HomeChat> {
           // );
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => HomeJobAdmin()),
+            MaterialPageRoute(builder: (context) => HomeLogin()),
           );
         }
       },
-      child: Expanded(
-        child: Container(
-        width: MediaQuery.of(context).size.width,
-        height: 50,
-        decoration: BoxDecoration(
-          color: Color(0xFFC03A2C),
-          borderRadius: BorderRadius.circular(12),
-        ),
-        child: Center(
-          child: Text(
-            'Tiếp tục',
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
-              color: Colors.white,
-            ),
+      child: Container(
+      width: MediaQuery.of(context).size.width,
+      height: 50,
+      decoration: BoxDecoration(
+        color: Color(0xFFC03A2C),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Center(
+        child: Text(
+          'Tiếp tục',
+          style: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w600,
+            color: Colors.white,
           ),
         ),
       ),
-      ),
+            ),
     );
   }
 }

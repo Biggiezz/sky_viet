@@ -265,7 +265,7 @@ class _HomeLoginState extends State<HomeLogin> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => HomeJobAdmin()),
+                  MaterialPageRoute(builder: (context) => HomeJob()),
                 );
               },
               child: Container(

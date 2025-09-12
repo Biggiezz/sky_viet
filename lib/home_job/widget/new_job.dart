@@ -13,6 +13,7 @@ class _NewJobState extends State<NewJob> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(20),
@@ -74,14 +75,15 @@ class _NewJobState extends State<NewJob> {
                 const Spacer(),
                 Image.asset(ImageAssets.flag,
                   width: 24,
-                  height: 24,), // Ensure asset is defined
+                  height: 24,),
               ],
             ),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: SizedBox(
-              width: double.infinity,
+              width: 295,
+              height: 44,
               child: Text(
                 'Chở phòng thí nghiệm đi lấy mẫu tại Km 189',
                 style: const TextStyle(
@@ -142,7 +144,7 @@ class _NewJobState extends State<NewJob> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Image.asset(ImageAssets.calendar), // Ensure asset is defined
+        Image.asset(ImageAssets.calendar),
         const SizedBox(width: 4),
         const Text(
           '23/03/2023',

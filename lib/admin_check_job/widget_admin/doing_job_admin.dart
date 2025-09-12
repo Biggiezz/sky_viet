@@ -1,5 +1,6 @@
 import 'package:chat/assets/image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class DoingJobAdmin extends StatefulWidget {
   const DoingJobAdmin({super.key});
@@ -58,10 +59,17 @@ class _DoingJobAdminState extends State<DoingJobAdmin> {
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
               children: [
-                Image.asset(ImageAssets.addHome),
-                SizedBox(width: 8),
-                Text('CAO TỐC BẮC NAM'),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Image.asset(ImageAssets.addHome, width: 24.w, height: 24.h,
+                    ),
+                    SizedBox(width: 8),
+                    Text('CAO TỐC BẮC NAM'),
+                  ],
+                ),
                 Image.asset(ImageAssets.flag),
               ],
             ),
