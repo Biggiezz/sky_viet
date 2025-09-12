@@ -2,6 +2,7 @@ import 'package:chat/admin_check_job/home_job_admin.dart';
 import 'package:chat/assets/image.dart';
 import 'package:chat/home_job/home_job.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:local_auth/local_auth.dart'
     show AuthenticationOptions, LocalAuthentication;
 
@@ -81,9 +82,7 @@ class _HomeLoginState extends State<HomeLogin> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-      ),
+      appBar: AppBar(backgroundColor: Colors.white),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -159,8 +158,9 @@ class _HomeLoginState extends State<HomeLogin> {
       obscureText: _isObscured,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       validator: (value) {
-        if (value == null || value.isEmpty) return 'Vui lòng nhập mật khẩu';
-        if (!passwordRegex.hasMatch(value)) {
+        if (value == null || value.isEmpty) {
+          return 'Vui lòng nhập mật khẩu';
+        } else if (!passwordRegex.hasMatch(value)) {
           return 'Mật khẩu phải ≥8 ký tự, có chữ hoa, chữ thường, số và ký tự đặc biệt';
         }
         return null;
@@ -171,10 +171,8 @@ class _HomeLoginState extends State<HomeLogin> {
         fillColor: const Color(0xFFFAFAFA),
 
         labelText: 'Mật khẩu',
-        floatingLabelBehavior: FloatingLabelBehavior.always,
         hintText: 'At least 8 characters',
 
-        isDense: true,
         contentPadding: const EdgeInsets.fromLTRB(16, 24, 48, 14),
 
         border: OutlineInputBorder(
@@ -239,14 +237,22 @@ class _HomeLoginState extends State<HomeLogin> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         // Nút Đăng nhập
-        Expanded(
+        Container(
+          width: 276.w,
+          height: 50.h,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(12),
+            color: Color(0xFFC03A2C),
+          ),
           child: GestureDetector(
             onTap: () {
               try {
-                if (_passwordController.text.isNotEmpty &&
-                    _passwordController.text.length >= 8) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Đăng nhập thành công')),
+                // Kiểm tra mật khẩu nếu đúng thì cho đăng nhập
+                // nếu sau kiểm tra các trường hợp còn lại và show SnackBar
+                if (passwordRegex.hasMatch(_passwordController.text)) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => HomeJob()),
                   );
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(
@@ -261,33 +267,26 @@ class _HomeLoginState extends State<HomeLogin> {
                 ).showSnackBar(SnackBar(content: Text('Lỗi: $e')));
               }
             },
-            child: GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => HomeJob()),
-                );
-              },
-              child: Container(
-                height: 50,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                  color: Color(0xFFC03A2C),
-                ),
-                child: const Center(
-                  child: Text(
-                    'Đăng nhập',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.white,
-                    ),
+            child: Container(
+              height: 50,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                color: Color(0xFFC03A2C),
+              ),
+              child: const Center(
+                child: Text(
+                  'Đăng nhập',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.white,
                   ),
                 ),
               ),
             ),
           ),
         ),
+
         const SizedBox(width: 12),
         // Nút Face ID
         GestureDetector(

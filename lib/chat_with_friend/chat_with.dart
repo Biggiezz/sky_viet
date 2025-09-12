@@ -13,6 +13,8 @@ class HomeChat extends StatefulWidget {
 
 class _HomeChatState extends State<HomeChat> {
   final _formKey = GlobalKey<FormState>();
+  final FocusNode _emailFocus = FocusNode();
+
   final TextEditingController _emailController = TextEditingController();
   final regex = RegExp(r'^[\w-\.-]{2,}@([\w-]+\.)+[a-zA-Z]{2,6}$');
 
@@ -84,6 +86,8 @@ class _HomeChatState extends State<HomeChat> {
       child: TextFormField(
         controller: _emailController,
         autovalidateMode: AutovalidateMode.onUserInteraction,
+        focusNode: _emailFocus,
+
         validator: (value) {
           if (value == null || value.isEmpty) {
             return 'Vui lòng nhập tài khoản';

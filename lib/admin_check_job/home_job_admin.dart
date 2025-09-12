@@ -63,33 +63,31 @@ class _HomeJobAdminState extends State<HomeJobAdmin> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Expanded(
-                  child: Container(
-                    height: 48,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                          color: Color(0xFF7A7A7A).withValues(alpha: 0.20),
-                          spreadRadius: 0,
-                          blurRadius: 21.94,
-                          offset: Offset(0, 10.97),
-                        ),
-                      ],
-                    ),
-                    child: Expanded(
-                      child: Row(
-                        children: const [
-                          SizedBox(width: 20),
-                          Icon(Icons.apps),
-                          SizedBox(width: 8),
-                          Text("Tất cả"),
-                          Spacer(),
-                          Icon(Icons.menu),
-                          SizedBox(width: 12),
-                        ],
+                Container(
+                  height: 48,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color(0xFF7A7A7A).withValues(alpha: 0.20),
+                        spreadRadius: 0,
+                        blurRadius: 21.94,
+                        offset: Offset(0, 10.97),
                       ),
+                    ],
+                  ),
+                  child: Expanded(
+                    child: Row(
+                      children: const [
+                        SizedBox(width: 20),
+                        Icon(Icons.apps),
+                        SizedBox(width: 8),
+                        Text("Tất cả"),
+                        Spacer(),
+                        Icon(Icons.menu),
+                        SizedBox(width: 12),
+                      ],
                     ),
                   ),
                 ),
