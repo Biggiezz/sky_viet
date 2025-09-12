@@ -63,7 +63,7 @@ class _DoneJobState extends State<DoneJob> {
           children: [
             Row(
               children: [
-                Image.asset(ImageAssets.noteAdd),
+                Image.asset(ImageAssets.addHome),
                 SizedBox(width: 8),
                 Text('CAO TỐC BẮC NAM'),
                 SizedBox(width: 150),

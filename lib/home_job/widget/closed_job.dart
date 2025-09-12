@@ -16,8 +16,9 @@ class _ClosedJobState extends State<ClosedJob> {
         children: [
           _buildCloseJob(),
           _buildJobDontDone(),
-          _buildJobDontDone(),
+
           _buildCloseJob(),
+          _buildJobDontDone(),
         ],
       ),
     );
@@ -25,7 +26,7 @@ class _ClosedJobState extends State<ClosedJob> {
 
   Widget _buildCloseJob() {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(20, 0, 20, 10),
+      padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
       child: Container(
         width: MediaQuery.of(context).size.width,
         height: 225,
@@ -56,7 +57,7 @@ class _ClosedJobState extends State<ClosedJob> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
 
                 children: [
-                  SizedBox(child: Image.asset(ImageAssets.noteAdd)),
+                  SizedBox(child: Image.asset(ImageAssets.addHome)),
 
                   Text(
                     'CAO TỐC BẮC NAM',
@@ -153,7 +154,7 @@ class _ClosedJobState extends State<ClosedJob> {
 
   Widget _buildJobDontDone() {
     return Padding(
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.fromLTRB(20, 12, 20, 12),
       child: Container(
         width: MediaQuery.of(context).size.width,
         height: 275,

@@ -1,3 +1,4 @@
+import 'package:chat/admin_check_job/home_job_admin.dart';
 import 'package:chat/assets/image.dart';
 import 'package:chat/home_job/home_job.dart';
 import 'package:flutter/material.dart';
@@ -83,68 +84,70 @@ class _HomeLoginState extends State<HomeLogin> {
       appBar: AppBar(
         backgroundColor: Colors.white,
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Stack(
-            children: [
-              SizedBox(
-                width: MediaQuery.of(context).size.width,
-                height: 160,
-                child: Image.asset(ImageAssets.logoHome),
-              ),
-              SizedBox(
-                width: MediaQuery.of(context).size.width,
-                child: Image.asset(ImageAssets.logo),
-              ),
-            ],
-          ),
-          Padding(
-            padding: const EdgeInsets.all(20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Stack(
               children: [
-                Row(
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                      child: Image.asset(ImageAssets.homeLogin, scale: 2),
-                    ),
-                    SizedBox(width: 12),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Chào buổi sáng,',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600,
-                            color: Color(0xFF28293D),
-                          ),
-                        ),
-                        Text(
-                          'ĐẶNG HOÀNG ANH',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w700,
-                            color: Color(0xFF28293D),
-                            fontSize: 20,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
+                SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  height: 160,
+                  child: Image.asset(ImageAssets.logoHome),
                 ),
-                SizedBox(height: 71),
-                _buildTextFieldPassWord(),
-                _buildText(),
-                SizedBox(height: 69),
-                _buildButtonSign(),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  child: Image.asset(ImageAssets.logo),
+                ),
               ],
             ),
-          ),
-        ],
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        child: Image.asset(ImageAssets.homeLogin, scale: 2),
+                      ),
+                      SizedBox(width: 12),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Chào buổi sáng,',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600,
+                              color: Color(0xFF28293D),
+                            ),
+                          ),
+                          Text(
+                            'ĐẶNG HOÀNG ANH',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w700,
+                              color: Color(0xFF28293D),
+                              fontSize: 20,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 71),
+                  _buildTextFieldPassWord(),
+                  _buildText(),
+                  SizedBox(height: 69),
+                  _buildButtonSign(),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -262,7 +265,7 @@ class _HomeLoginState extends State<HomeLogin> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => HomeJob()),
+                  MaterialPageRoute(builder: (context) => HomeJobAdmin()),
                 );
               },
               child: Container(

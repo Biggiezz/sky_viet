@@ -84,7 +84,7 @@ class _DoingJobState extends State<DoingJob> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Image.asset(ImageAssets.noteAdd),
+                Image.asset(ImageAssets.addHome),
                 Text(
                   'CAO TỐC BẮC NAM',
                   style: TextStyle(

@@ -1,3 +1,4 @@
+import 'package:chat/admin_check_job/home_job_admin.dart';
 import 'package:chat/assets/image.dart';
 import 'package:chat/home_login/home_login.dart';
 import 'package:flutter/material.dart';
@@ -23,47 +24,51 @@ class _HomeChatState extends State<HomeChat> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       appBar: AppBar(),
-      body: Column(
-        children: [
-          Stack(
-            children: [
-              SizedBox(
-                width: MediaQuery.of(context).size.width,
-                height: 160,
-                child: Image.asset(ImageAssets.logoHome),
-              ),
-              SizedBox(
-                width: MediaQuery.of(context).size.width,
-                child: Image.asset(ImageAssets.logo),
-              ),
-            ],
-          ),
-          SizedBox(height: 24),
-          Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Form(
-              key: _formKey,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Đăng Nhập',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w600,
-                      color: Color(0xff1C1C28),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Stack(
+              children: [
+                SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  height: 160,
+                  child: Image.asset(ImageAssets.logoHome),
+                ),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  child: Image.asset(ImageAssets.logo),
+                ),
+              ],
+            ),
+            SizedBox(height: 24),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Đăng Nhập',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w600,
+                        color: Color(0xff1C1C28),
+                      ),
                     ),
-                  ),
-                  SizedBox(height: 20),
-                  _buildTextField(),
-                  SizedBox(height: 173),
-                  _buildButtonSign(),
-                ],
+                    SizedBox(height: 20),
+                    _buildTextField(),
+                    SizedBox(height: 173),
+                    _buildButtonSign(),
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -112,11 +117,12 @@ class _HomeChatState extends State<HomeChat> {
           // );
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => HomeLogin()),
+            MaterialPageRoute(builder: (context) => HomeJobAdmin()),
           );
         }
       },
-      child: Container(
+      child: Expanded(
+        child: Container(
         width: MediaQuery.of(context).size.width,
         height: 50,
         decoration: BoxDecoration(
@@ -133,6 +139,7 @@ class _HomeChatState extends State<HomeChat> {
             ),
           ),
         ),
+      ),
       ),
     );
   }
