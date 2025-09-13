@@ -83,7 +83,17 @@ class _HomeJobState extends State<HomeJob>
                       SizedBox(width: 20.w),
                       Icon(Icons.apps),
                       SizedBox(width: 8.w),
-                      Text("Tất cả"),
+                      Expanded(child: TextField(
+                        decoration: InputDecoration(
+                          hintText: 'Tất cả (52)',
+                          hintStyle: TextStyle(
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.w500,
+                            color:  Color(0xff555770),
+                          ),
+                          border: InputBorder.none,
+
+                      ))),
                       Spacer(),
                       Icon(Icons.menu),
                       SizedBox(width: 12.w),

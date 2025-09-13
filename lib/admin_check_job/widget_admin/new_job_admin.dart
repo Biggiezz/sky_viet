@@ -15,7 +15,7 @@ class _NewJobAdminState extends State<NewJobAdmin> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(23, 21, 17, 0),
+          padding: const EdgeInsets.all(20),
           child: Column(
             children: [
               _buildContainerJobDoneEarly(),
