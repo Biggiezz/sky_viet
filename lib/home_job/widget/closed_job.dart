@@ -83,7 +83,7 @@ class _ClosedJobState extends State<ClosedJob> {
                       ),
                     ],
                   ),
-                  SizedBox(width: 4),
+                  SizedBox(width: 4.w),
 
                   SizedBox(
                     width: 24.w,
@@ -101,7 +101,7 @@ class _ClosedJobState extends State<ClosedJob> {
                     child: Text(
                       'Chở phòng thí nghiệm đi lấy mẫu tại Km189',
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 16.sp,
                         fontWeight: FontWeight.w600,
                         color: Color(0xFF1C1C28),
                       ),

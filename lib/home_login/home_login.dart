@@ -91,7 +91,7 @@ class _HomeLoginState extends State<HomeLogin> {
               children: [
                 SizedBox(
                   width: MediaQuery.of(context).size.width,
-                  height: 160,
+                  height: 160.h,
                   child: Image.asset(ImageAssets.logoHome),
                 ),
                 SizedBox(
@@ -103,24 +103,18 @@ class _HomeLoginState extends State<HomeLogin> {
             Padding(
               padding: const EdgeInsets.all(20),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
                     children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30),
-                        ),
-                        child: Image.asset(ImageAssets.homeLogin, scale: 2),
-                      ),
-                      SizedBox(width: 12),
+                      Image.asset(ImageAssets.homeLogin, scale: 2),
+                      SizedBox(width: 12.w),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             'Chào buổi sáng,',
                             style: TextStyle(
-                              fontSize: 18,
+                              fontSize: 18.sp,
                               fontWeight: FontWeight.w600,
                               color: Color(0xFF28293D),
                             ),
@@ -130,18 +124,19 @@ class _HomeLoginState extends State<HomeLogin> {
                             style: TextStyle(
                               fontWeight: FontWeight.w700,
                               color: Color(0xFF28293D),
-                              fontSize: 20,
+                              fontSize: 20.sp,
                             ),
                           ),
                         ],
                       ),
                     ],
                   ),
-                  SizedBox(height: 71),
+                  SizedBox(height: 71.h),
                   _buildTextFieldPassWord(),
                   _buildText(),
-                  SizedBox(height: 69),
+                  SizedBox(height: 69.h),
                   _buildButtonSign(),
+
                 ],
               ),
             ),
@@ -159,13 +154,13 @@ class _HomeLoginState extends State<HomeLogin> {
       autovalidateMode: AutovalidateMode.onUserInteraction,
       validator: (value) {
         if (value == null || value.isEmpty) {
-          return 'Vui lòng nhập mật khẩu';
+          return 'Please enter your password';
         } else if (!passwordRegex.hasMatch(value)) {
-          return 'Mật khẩu phải ≥8 ký tự, có chữ hoa, chữ thường, số và ký tự đặc biệt';
+          return 'Mật khẩu phải ≥8 ký tự, chữ hoa, chữ thường, số và ký tự đặc biệt';
         }
         return null;
       },
-      style: const TextStyle(fontSize: 16, height: 1.4),
+      style:  TextStyle(fontSize: 16, height: 1.4),
       decoration: InputDecoration(
         filled: true,
         fillColor: const Color(0xFFFAFAFA),
@@ -214,7 +209,7 @@ class _HomeLoginState extends State<HomeLogin> {
           Text(
             'Tài khoản khác',
             style: TextStyle(
-              fontSize: 14,
+              fontSize: 14.sp,
               fontWeight: FontWeight.w600,
               color: Color(0xFFC03A2C),
             ),
@@ -222,7 +217,7 @@ class _HomeLoginState extends State<HomeLogin> {
           Text(
             'Quên mật khẩu?',
             style: TextStyle(
-              fontSize: 14,
+              fontSize: 14.sp,
               fontWeight: FontWeight.w600,
               color: Color(0xFFC03A2C),
             ),
@@ -252,32 +247,33 @@ class _HomeLoginState extends State<HomeLogin> {
                 if (passwordRegex.hasMatch(_passwordController.text)) {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => HomeJob()),
+                    MaterialPageRoute(builder: (context) => HomeJobAdmin()),
                   );
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
-                      content: Text('Mật khẩu phải có ít nhất 8 ký tự'),
+                      content: Text('Mật khẩu không đúng dịnh dạng'),
                     ),
                   );
                 }
-              } catch (e) {
+              } //cái catch này có vẻ hơi thừa
+              catch (e) {
                 ScaffoldMessenger.of(
                   context,
                 ).showSnackBar(SnackBar(content: Text('Lỗi: $e')));
               }
             },
             child: Container(
-              height: 50,
+              height: 50.h,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
                 color: Color(0xFFC03A2C),
               ),
-              child: const Center(
+              child:  Center(
                 child: Text(
                   'Đăng nhập',
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 16.sp,
                     fontWeight: FontWeight.w600,
                     color: Colors.white,
                   ),

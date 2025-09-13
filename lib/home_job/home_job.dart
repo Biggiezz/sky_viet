@@ -4,6 +4,7 @@ import 'package:chat/home_job/widget/doing_job.dart';
 import 'package:chat/home_job/widget/done_job.dart';
 import 'package:chat/home_job/widget/new_job.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class HomeJob extends StatefulWidget {
@@ -35,10 +36,10 @@ class _HomeJobState extends State<HomeJob>
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.red,
-        title: const Text(
+        title:  Text(
           'Công việc',
           style: TextStyle(
-            fontSize: 20,
+            fontSize: 20.sp,
             fontWeight: FontWeight.w600,
             color: Colors.white,
           ),
@@ -64,8 +65,8 @@ class _HomeJobState extends State<HomeJob>
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Container(
-                  width: 330,
-                  height: 48,
+                  width: 276.w,
+                  height: 48.h,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     color: Colors.white,
@@ -77,20 +78,35 @@ class _HomeJobState extends State<HomeJob>
                       ),
                     ],
                   ),
-                  child: const Row(
+                  child:  Row(
                     children: [
-                      SizedBox(width: 20),
+                      SizedBox(width: 20.w),
                       Icon(Icons.apps),
-                      SizedBox(width: 8),
+                      SizedBox(width: 8.w),
                       Text("Tất cả"),
                       Spacer(),
                       Icon(Icons.menu),
-                      SizedBox(width: 12),
+                      SizedBox(width: 12.w),
                     ],
+
                   ),
+
                 ),
-                Image.asset(ImageAssets.iconSearch, scale: 1.6),
+                Container(
+                  width: 48.w,
+                    height: 48.h,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                      color: Colors.white,
+                        boxShadow: [BoxShadow(
+                          color: const Color(0xFF7A7A7A).withValues(alpha: 0.20),
+                          blurRadius: 21.94,
+                          offset: const Offset(0, 10.97),
+                        ),],
+                    ),
+                    child: Image.asset(ImageAssets.iconSearch, scale: 1.7)),
               ],
+
             ),
           ),
 
@@ -101,11 +117,11 @@ class _HomeJobState extends State<HomeJob>
             unselectedLabelColor: const Color(0xFF8F90A6),
             unselectedLabelStyle: TextStyle(
               fontWeight: FontWeight.w500,
-              fontSize: 14,
+              fontSize: 14.sp,
 
             ),
-            labelStyle: const TextStyle(
-              fontSize: 14,
+            labelStyle:  TextStyle(
+              fontSize: 14.sp,
               fontWeight: FontWeight.w600,
             ),
             indicatorColor: const Color(0xFFC03A2C),
@@ -139,7 +155,7 @@ class _HomeJobState extends State<HomeJob>
           borderRadius: BorderRadius.circular(100),
         ),
         onPressed: () {},
-        child: const Icon(Icons.add, color: Colors.white, size: 32),
+        child:  Icon(Icons.add, color: Colors.white, size: 32),
       ),
     );
   }

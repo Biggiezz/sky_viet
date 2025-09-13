@@ -1,5 +1,6 @@
 import 'package:chat/assets/image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class NewJob extends StatefulWidget {
@@ -21,9 +22,9 @@ class _NewJobState extends State<NewJob> {
             children: [
 
               _buildJobEntry(),
-              SizedBox(height: 12),
+              SizedBox(height: 12.h),
               _buildJobEntry(),
-              SizedBox(height: 12),
+              SizedBox(height: 12.h),
               _buildJobEntry(),
             ],
           ),
@@ -61,8 +62,8 @@ class _NewJobState extends State<NewJob> {
               children: [
                 Container(color: Colors.red,),
                Image.asset(ImageAssets.addHome,
-                 width: 24,
-                 height: 24,
+                 width: 24.w,
+                 height: 24.h,
                ),
                 const Text(
                   'CAO TỐC BẮC NAM',
@@ -74,16 +75,16 @@ class _NewJobState extends State<NewJob> {
                 ),
                 const Spacer(),
                 Image.asset(ImageAssets.flag,
-                  width: 24,
-                  height: 24,),
+                  width: 24.w,
+                  height: 24.h,),
               ],
             ),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: SizedBox(
-              width: 295,
-              height: 44,
+              width: 295.w ,
+              height: 44.h,
               child: Text(
                 'Chở phòng thí nghiệm đi lấy mẫu tại Km 189',
                 style: const TextStyle(
@@ -166,8 +167,8 @@ class _NewJobState extends State<NewJob> {
         ),
         const Spacer(),
         Container(
-          width: 68,
-          height: 24,
+          width: 68.w,
+          height: 24.h,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(6),
             color: const Color(0xFFE4E4EB),

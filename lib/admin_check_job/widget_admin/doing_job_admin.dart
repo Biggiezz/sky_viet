@@ -19,11 +19,11 @@ class _DoingJobAdminState extends State<DoingJobAdmin> {
           child: Column(
             children: [
               _buildJobDoneEarly(),
-              SizedBox(height: 12),
+              SizedBox(height: 12.h),
               _JobDone(),
-              SizedBox(height: 12),
+              SizedBox(height: 12.h),
               _buildJobDoneEarly(),
-              SizedBox(height: 12),
+              SizedBox(height: 12.h),
               _JobDone(),
             ],
           ),
@@ -35,7 +35,7 @@ class _DoingJobAdminState extends State<DoingJobAdmin> {
   Widget _buildJobDoneEarly() {
     return Container(
       width: MediaQuery.of(context).size.width,
-      height: 275,
+      height: 275.h,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
         color: Colors.white,
@@ -64,23 +64,29 @@ class _DoingJobAdminState extends State<DoingJobAdmin> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Image.asset(ImageAssets.addHome, width: 24.w, height: 24.h,
+                    Image.asset(ImageAssets.addHome, width: 24.w, height: 24.h),
+                    SizedBox(width: 8.w),
+                    Text(
+                      'CAO TỐC BẮC NAM',
+                      style: TextStyle(
+                        fontSize: 14.sp,
+                        fontWeight: FontWeight.w500,
+                        color: Color(0xFF8F90A6),
+                      ),
                     ),
-                    SizedBox(width: 8),
-                    Text('CAO TỐC BẮC NAM'),
                   ],
                 ),
-                Image.asset(ImageAssets.flag),
+                Image.asset(ImageAssets.flag, width: 24.w, height: 24.h),
               ],
             ),
             Row(
               children: [
                 SizedBox(
-                  width: 295,
+                  width: 295.h,
                   child: Text(
                     'Chở phòng thí nghiệm đi lấy mẫu tại Km 189',
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 16.sp,
                       fontWeight: FontWeight.w600,
                       color: Color(0xFF1C1C28),
                     ),
@@ -91,12 +97,12 @@ class _DoingJobAdminState extends State<DoingJobAdmin> {
             Row(
               children: [
                 Image.asset(ImageAssets.personEdit),
-                SizedBox(width: 4),
+                SizedBox(width: 4.w),
                 Text(
                   'Trần Tú Anh',
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
-                    fontSize: 14,
+                    fontSize: 14.sp,
                     color: Color(0xFF555770),
                   ),
                 ),
@@ -105,12 +111,12 @@ class _DoingJobAdminState extends State<DoingJobAdmin> {
             Row(
               children: [
                 Image.asset(ImageAssets.personEdit),
-                SizedBox(width: 4),
+                SizedBox(width: 4.w),
                 Text(
                   'Hoàng Thu Hồng',
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
-                    fontSize: 14,
+                    fontSize: 14.sp,
                     color: Color(0xFF555770),
                   ),
                 ),
@@ -135,17 +141,17 @@ class _DoingJobAdminState extends State<DoingJobAdmin> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Image.asset(ImageAssets.calendar),
-            SizedBox(width: 4),
+            SizedBox(width: 4.w),
             Text('23/03/2023'),
-            SizedBox(width: 8),
+            SizedBox(width: 8.w),
             Image.asset(ImageAssets.fileNewJob),
-            SizedBox(width: 8),
+            SizedBox(width: 4.w),
             Text('0 files'),
           ],
         ),
         Container(
-          width: 65,
-          height: 24,
+          width: 65.w,
+          height: 24.h,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(6),
             color: Color(0xFFE3FFF1),
@@ -154,7 +160,7 @@ class _DoingJobAdminState extends State<DoingJobAdmin> {
             child: Text(
               text ?? '',
               style: TextStyle(
-                fontSize: 12,
+                fontSize: 12.sp,
                 fontWeight: FontWeight.w600,
                 color: Color(0xFF05A660),
               ),
@@ -168,7 +174,7 @@ class _DoingJobAdminState extends State<DoingJobAdmin> {
   Widget _JobDone() {
     return Container(
       width: MediaQuery.of(context).size.width,
-      height: 275,
+      height: 275.h,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
         color: Colors.white,
@@ -194,21 +200,39 @@ class _DoingJobAdminState extends State<DoingJobAdmin> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Image.asset(ImageAssets.addHome),
-                Text('CAO TỐC BẮC NAM'),
-                Image.asset(ImageAssets.flag),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Image.asset(ImageAssets.addHome, width: 24.w, height: 24.h),
+                    SizedBox(width: 4.w),
+                    Text(
+                      'CAO TỐC BẮC NAM',
+                      style: TextStyle(
+                        fontSize: 14.sp,
+                        fontWeight: FontWeight.w500,
+                        color: Color(0xFF8F90A6),
+                      ),
+                    ),
+                  ],
+                ),
+
+                Row(
+                  children: [
+                    Image.asset(ImageAssets.flag, width: 24.w, height: 24.h),
+                  ],
+                ),
               ],
             ),
 
             Row(
               children: [
                 SizedBox(
-                  width: 295,
-                  height: 44,
+                  width: 295.w,
+                  height: 44.h,
                   child: Text(
                     'Chở phòng thí nghiệm đi lấy mẫu tại Km 189',
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 16.sp,
                       fontWeight: FontWeight.w600,
                       color: Color(0xFF1C1C28),
                     ),
@@ -220,13 +244,30 @@ class _DoingJobAdminState extends State<DoingJobAdmin> {
             Row(
               children: [
                 Image.asset(ImageAssets.personEdit),
-                Text('Trần Tú Anh'),
+                SizedBox(width: 4.w),
+
+                Text(
+                  'Trần Tú Anh',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 14.sp,
+                    color: Color(0xFF555770),
+                  ),
+                ),
               ],
             ),
             Row(
               children: [
                 Image.asset(ImageAssets.personTick),
-                Text('Hoàng Thu Hồng'),
+                SizedBox(width: 4.w),
+                Text(
+                  'Hoàng Thu Hồng',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 14.sp,
+                    color: Color(0xFF555770),
+                  ),
+                ),
               ],
             ),
             _buildCalendar2('HT ĐÚNG HẠN'),
@@ -248,17 +289,17 @@ class _DoingJobAdminState extends State<DoingJobAdmin> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Image.asset(ImageAssets.calendar),
-            SizedBox(width: 4),
+            SizedBox(width: 4.w),
             Text('23/03/2023'),
-            SizedBox(width: 8),
+            SizedBox(width: 8.w),
             Image.asset(ImageAssets.fileNewJob),
-            SizedBox(width: 8),
+            SizedBox(width: 4.w),
             Text('0 files'),
           ],
         ),
         Container(
-          width: 101,
-          height: 24,
+          width: 101.w,
+          height: 24.h,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(6),
             color: Color(0xFFFFF1E1),
@@ -267,7 +308,7 @@ class _DoingJobAdminState extends State<DoingJobAdmin> {
             child: Text(
               text ?? '',
               style: TextStyle(
-                fontSize: 12,
+                fontSize: 12.sp,
                 fontWeight: FontWeight.w600,
                 color: Color(0xFFE56E00),
               ),
@@ -280,8 +321,8 @@ class _DoingJobAdminState extends State<DoingJobAdmin> {
 
   Widget _buttonNoApproved() {
     return Container(
-      width: 139.5,
-      height: 34,
+      width: 139.5.w,
+      height: 34.h,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
         border: Border.all(color: Color(0xFFC03A2C)),
@@ -290,7 +331,7 @@ class _DoingJobAdminState extends State<DoingJobAdmin> {
         child: Text(
           'Không duyệt',
           style: TextStyle(
-            fontSize: 14,
+            fontSize: 14.sp,
             fontWeight: FontWeight.w600,
             color: Color(0XFFC03A2C),
           ),
@@ -301,8 +342,8 @@ class _DoingJobAdminState extends State<DoingJobAdmin> {
 
   Widget _buttonApproved() {
     return Container(
-      width: 139.5,
-      height: 34,
+      width: 139.5.w,
+      height: 34.h,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
         color: Color(0xFFC03A2C),
@@ -311,7 +352,7 @@ class _DoingJobAdminState extends State<DoingJobAdmin> {
         child: Text(
           'Duyệt',
           style: TextStyle(
-            fontSize: 14,
+            fontSize: 14.sp,
             fontWeight: FontWeight.w600,
             color: Colors.white,
           ),
